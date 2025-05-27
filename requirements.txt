@@ -1,3 +1,10 @@
-fastapi
 gradio
+fastapi
 uvicorn
+python-dotenv
+authlib
+langchain
+langchain-community
+langchain-openai
+langchain-chroma
+openai
