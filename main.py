@@ -1,12 +1,20 @@
 import gradio as gr
+from fastapi import FastAPI
+from gradio.routes import App
 
-def greet(name, intensity):
-    return "Hello, " + name + "!" * int(intensity)
+# Minimal chatbot logic
+def chatbot(message):
+    return "You said: " + message
 
-demo = gr.Interface(
-    fn=greet,
-    inputs=["text", "slider"],
-    outputs=["text"],
-)
+# Gradio Interface
+demo = gr.ChatInterface(fn=chatbot)
 
-demo.launch()
+# FastAPI wrapper
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is running"}
+
+# Mount Gradio app under /chat
+app.mount("/chat", App.create_app(demo))
