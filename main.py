@@ -360,7 +360,7 @@ gr.HTML("""
 
 title = "StiqChat"
 
-with gr.Blocks(theme=gr.themes.Soft(), title=title) as main_demo:
+with gr.Blocks(theme=gr.themes.Soft(primary_hue="gray", secondary_hue="green"), title=title) as main_demo:
     m = gr.Markdown()
     main_demo.load(greet, None, m)
 
