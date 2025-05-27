@@ -101,7 +101,7 @@ USER_DATA_ACCESS = {
 }
 
 # Logging setup
-LOG_FILE = "/content/drive/MyDrive/Internal LLM/login_logout_log.csv"
+LOG_FILE = "login_logout_log.csv"
 log_path = Path(LOG_FILE)
 if not log_path.exists():
     with open(LOG_FILE, mode="w", newline="") as file:
