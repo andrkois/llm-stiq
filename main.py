@@ -120,6 +120,11 @@ def get_user(request: Request):
 def is_valid_email(email: str) -> bool:
     return email.endswith('@stiq.gr')
 
+
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse("images/favicon.png", media_type="image/png")
+
 @app.get('/')
 def public(user: dict = Depends(get_user)):
     return RedirectResponse(url='/gradio' if user else '/login-demo')
@@ -353,7 +358,9 @@ gr.HTML("""
 </style>
 """)
 
-with gr.Blocks(theme=gr.themes.Monochrome()) as main_demo:
+title = "StiqChat"
+
+with gr.Blocks(theme=gr.themes.Monochrome(), title=title) as main_demo:
     m = gr.Markdown()
     main_demo.load(greet, None, m)
 
